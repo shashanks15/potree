@@ -1,5 +1,3 @@
-
-
 import {ClipTask, ClipMethod, CameraMode} from "../defines.js";
 import {Renderer} from "../PotreeRenderer.js";
 import {PotreeRenderer} from "./PotreeRenderer.js";
@@ -393,6 +391,20 @@ export class Viewer extends EventDispatcher{
 	setNavigationMode (value) {
 		this.scene.view.navigationMode = value;
 	};
+
+	getNavigationMode (navigationMode) {
+		if (navigationMode === "OrbitControls") {
+			return OrbitControls;
+		} else if (navigationMode === "FirstPersonControls") {
+			return FirstPersonControls;
+		} else if (navigationMode === "EarthControls") {
+			return EarthControls;
+		} else if (navigationMode === "DeviceOrientationControls") {
+			return DeviceOrientationControls;
+		} else {
+			return null;
+		}
+	}
 
 	setShowBoundingBox (value) {
 		if (this.showBoundingBox !== value) {
